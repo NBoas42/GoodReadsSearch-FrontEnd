@@ -21,18 +21,10 @@ Start the development server on http://localhost:3000
 npm run dev
 ```
 
-## Production
+## To View Code Structure
 
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
+Open This link
 
 ```bash
-npm run preview
+https://github.dev/NBoas42/GoodReadsSearch-FrontEnd
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
