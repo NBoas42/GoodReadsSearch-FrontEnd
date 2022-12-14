@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class=" flex justify-center bg-slate-800">
-            <button v-if="searchStore.data.nextPage" @click="searchStore.fetchNextPage()" class="p-2 rounded font-mono text-white bg-blue-800">Load More</button>
+            <button v-if="searchStore.getNextPage" @click="searchStore.fetchNextPage()" class="p-2 rounded font-mono text-white bg-blue-800">Load More</button>
         </div>
 
     </div>

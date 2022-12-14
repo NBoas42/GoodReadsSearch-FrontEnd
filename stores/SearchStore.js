@@ -11,7 +11,7 @@ export const useSearchStore = defineStore('search',
         getters: {
             getResults: (state) => state.data.results,
             getSearchText: (state) => state.searchText,
-            getNextPage:(state)=> state.data.results.nextPage
+            getNextPage:(state)=> state.data.nextPage
         },
         actions: {
             updateSearchText(searchText) {
