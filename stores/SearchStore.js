@@ -1,10 +1,7 @@
 import { defineStore } from 'pinia'
+import VueToast from 'vue-toast'
 import axios from 'axios'
 
-// You can name the return value of `defineStore()` anything you want, 
-// but it's best to use the name of the store and surround it with `use` 
-// and `Store` (e.g. `useUserStore`, `useCartStore`, `useProductStore`)
-// the first argument is a unique id of the store across your application
 export const useSearchStore = defineStore('search',
     {
         state: () => ({
@@ -14,11 +11,9 @@ export const useSearchStore = defineStore('search',
         getters: {
             getResults: (state) => state.data.results,
             getSearchText: (state) => state.searchText,
+            getNextPage:(state)=> state.data.results.nextPage
         },
         actions: {
-            logSearchText() {
-                console.log(this.searchText)
-            },
             updateSearchText(searchText) {
                 this.searchText = searchText
             },
@@ -31,16 +26,16 @@ export const useSearchStore = defineStore('search',
               })
               this.data = response.data
             },
-            async getNextPage(){
-                const response = await $fetch(`http://localhost:3001/v1/book/search?searchText=${this.searchText}`,{
+            async fetchNextPage(){
+                const response = await $fetch(`http://localhost:3001/v1/book/search?searchText=${this.searchText}&page=${this.data.nextPage}`,{
                     method: 'GET',
                     headers: {
                       'Content-Type': 'application/json',
                     }
               })
+              this.data.results = [...this.data.results,...response.data.results]
               this.data = {
                 ...this.data,
-                results: results.push(response.data.results),
                 nextPage: response.data.nextPage
               }
             }
