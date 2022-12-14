@@ -20,7 +20,6 @@
 
 <script setup>
 const {book} = defineProps(['book'])
-console.log(book)
 </script>
 
 <style lang="scss" scoped>
