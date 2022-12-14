@@ -1,6 +1,4 @@
 import { defineStore } from 'pinia'
-import VueToast from 'vue-toast'
-import axios from 'axios'
 
 export const useSearchStore = defineStore('search',
     {

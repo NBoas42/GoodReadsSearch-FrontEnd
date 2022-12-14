@@ -17,7 +17,6 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.6",
-    "pinia": "^2.0.28",
-    "vue-toast": "^3.1.0"
+    "pinia": "^2.0.28"
   }
 }
