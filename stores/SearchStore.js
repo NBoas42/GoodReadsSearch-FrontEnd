@@ -23,13 +23,26 @@ export const useSearchStore = defineStore('search',
                 this.searchText = searchText
             },
             async searchBooks() {
-                this.data = await $fetch('http://localhost:3001/v1/book/search?searchText=star&page=2',{
+                const response = await $fetch(`http://localhost:3001/v1/book/search?searchText=${this.searchText}`,{
                     method: 'GET',
                     headers: {
                       'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin': '*',
                     }
               })
+              this.data = response.data
+            },
+            async getNextPage(){
+                const response = await $fetch(`http://localhost:3001/v1/book/search?searchText=${this.searchText}`,{
+                    method: 'GET',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    }
+              })
+              this.data = {
+                ...this.data,
+                results: results.push(response.data.results),
+                nextPage: response.data.nextPage
+              }
             }
         }
     })
